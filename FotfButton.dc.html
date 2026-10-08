@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./resources.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/design-system-818b5715-8859-4a00-8281-c06910e8e5e2/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/design-system-818b5715-8859-4a00-8281-c06910e8e5e2/tokens/colors.css">
+<script src="_ds/design-system-818b5715-8859-4a00-8281-c06910e8e5e2/_ds_bundle.js"></script>
+</helmet>
+<sc-if value="{{ p }}" hint-placeholder-val="{{ true }}"><a href="{{ href }}" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;background:#FFD100;color:#0B0B0B;border:2px solid #0B0B0B;font:600 16px/1 var(--font-body);text-decoration:none;white-space:nowrap;transition:transform .15s ease,box-shadow .15s ease;box-sizing:border-box" style-hover="transform:translate(-3px,-3px);box-shadow:4px 4px 0 #0B0B0B;color:#0B0B0B" style-active="transform:translate(0,0);box-shadow:none" style-focus="outline:3px solid #0B0B0B;outline-offset:3px">{{ label }}</a></sc-if>
+<sc-if value="{{ pd }}" hint-placeholder-val="{{ false }}"><a href="{{ href }}" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;background:#FFD100;color:#0B0B0B;border:2px solid #FFD100;font:600 16px/1 var(--font-body);text-decoration:none;white-space:nowrap;transition:transform .15s ease,box-shadow .15s ease;box-sizing:border-box" style-hover="transform:translate(-3px,-3px);box-shadow:4px 4px 0 #F4F1EA;color:#0B0B0B" style-active="transform:translate(0,0);box-shadow:none" style-focus="outline:3px solid #F4F1EA;outline-offset:3px">{{ label }}</a></sc-if>
+<sc-if value="{{ s }}" hint-placeholder-val="{{ false }}"><a href="{{ href }}" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;background:transparent;color:#0B0B0B;border:2px solid #0B0B0B;font:600 16px/1 var(--font-body);text-decoration:none;white-space:nowrap;transition:background .15s ease,color .15s ease;box-sizing:border-box" style-hover="background:#0B0B0B;color:#F4F1EA" style-active="background:#2a2926;color:#F4F1EA" style-focus="outline:3px solid #0B0B0B;outline-offset:3px">{{ label }}</a></sc-if>
+<sc-if value="{{ sd }}" hint-placeholder-val="{{ false }}"><a href="{{ href }}" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;background:transparent;color:#F4F1EA;border:2px solid #F4F1EA;font:600 16px/1 var(--font-body);text-decoration:none;white-space:nowrap;transition:background .15s ease,color .15s ease;box-sizing:border-box" style-hover="background:#F4F1EA;color:#0B0B0B" style-focus="outline:3px solid #FFD100;outline-offset:3px">{{ label }}</a></sc-if>
+<sc-if value="{{ a }}" hint-placeholder-val="{{ false }}"><a href="{{ href }}" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;background:#0B0B0B;color:#F4F1EA;border:2px solid #0B0B0B;font:600 16px/1 var(--font-body);text-decoration:none;white-space:nowrap;transition:background .15s ease,color .15s ease;box-sizing:border-box" style-hover="background:#2a2926;color:#FFD100" style-focus="outline:3px solid #0B0B0B;outline-offset:3px">{{ label }}</a></sc-if>
+<sc-if value="{{ t }}" hint-placeholder-val="{{ false }}"><a href="{{ href }}" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;color:#0B0B0B;font:600 16px/1.2 var(--font-body);text-decoration:underline;text-decoration-color:#FFD100;text-decoration-thickness:3px;text-underline-offset:7px;transition:text-decoration-color .15s ease" style-hover="text-decoration-color:#0B0B0B;color:#0B0B0B" style-focus="outline:3px solid #0B0B0B;outline-offset:3px">{{ label }}<span aria-hidden="true">→</span></a></sc-if>
+<sc-if value="{{ td }}" hint-placeholder-val="{{ false }}"><a href="{{ href }}" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;color:#F4F1EA;font:600 16px/1.2 var(--font-body);text-decoration:underline;text-decoration-color:#FFD100;text-decoration-thickness:3px;text-underline-offset:7px" style-hover="text-decoration-color:#F4F1EA;color:#F4F1EA" style-focus="outline:3px solid #FFD100;outline-offset:3px">{{ label }}<span aria-hidden="true">→</span></a></sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:320,&quot;height&quot;:80},&quot;label&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Book a free 20-minute call&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;href&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;#book&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;primary&quot;,&quot;secondary&quot;,&quot;action&quot;,&quot;text&quot;],&quot;default&quot;:&quot;primary&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;tone&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const v = this.props.variant ?? 'primary', d = (this.props.tone ?? 'light') === 'dark';
+    return {
+      label: this.props.label ?? 'Book a free 20-minute call',
+      href: this.props.href ?? '#book',
+      p: v === 'primary' && !d, pd: v === 'primary' && d,
+      s: v === 'secondary' && !d, sd: v === 'secondary' && d,
+      a: v === 'action',
+      t: v === 'text' && !d, td: v === 'text' && d
+    };
+  }
+}
+</script>
+</body>
+</html>

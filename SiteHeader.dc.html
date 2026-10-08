@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./resources.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/design-system-818b5715-8859-4a00-8281-c06910e8e5e2/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/design-system-818b5715-8859-4a00-8281-c06910e8e5e2/tokens/colors.css">
+<script src="_ds/design-system-818b5715-8859-4a00-8281-c06910e8e5e2/_ds_bundle.js"></script>
+</helmet>
+<header style="position:sticky;top:0;z-index:50;background:#F4F1EA;border-bottom:1px solid #D9CFC0">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,64px);height:84px;display:flex;align-items:center;gap:32px">
+    <a href="Home.dc.html" aria-label="Focus on the Field home" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:#0B0B0B;flex:none" style-focus="outline:3px solid #0B0B0B;outline-offset:4px">
+      <span style="background:#0B0B0B;color:#FFD100;font:26px/1 var(--font-display);padding:9px 9px 7px;letter-spacing:.02em">FOTF</span>
+      <span style="font:700 12px/1.1 var(--font-body);text-transform:uppercase;letter-spacing:.08em">Focus on<br>the Field</span>
+    </a>
+    <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+      <nav aria-label="Main" style="display:flex;gap:28px;margin-left:auto">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+          <a href="{{ n.href }}" style="font:500 15px/1 var(--font-body);color:#0B0B0B;text-decoration:underline;text-decoration-color:{{ n.line }};text-decoration-thickness:3px;text-underline-offset:10px;padding:12px 0" style-hover="text-decoration-color:#FFD100;color:#0B0B0B" style-focus="outline:3px solid #0B0B0B;outline-offset:2px">{{ n.label }}</a>
+        </sc-for>
+      </nav>
+      <a href="#login" style="font:500 13px/1 var(--font-body);color:#57534B;text-decoration:none;padding:12px 0;margin-left:8px" style-hover="color:#0B0B0B;text-decoration:underline" style-focus="outline:3px solid #0B0B0B;outline-offset:2px">Client Login</a>
+      <dc-import name="FotfButton" variant="primary" hint-size="250px,52px"></dc-import>
+    </sc-if>
+    <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggle }}" aria-label="Open menu" aria-expanded="{{ open }}" style="margin-left:auto;width:52px;height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:#0B0B0B;border:0;cursor:pointer" style-focus="outline:3px solid #0B0B0B;outline-offset:3px">
+        <span style="width:22px;height:2px;background:#FFD100;display:block"></span>
+        <span style="width:22px;height:2px;background:#FFD100;display:block"></span>
+        <span style="width:14px;height:2px;background:#FFD100;display:block;margin-left:-8px"></span>
+      </button>
+    </sc-if>
+  </div>
+</header>
+<sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-label="Menu" style="position:fixed;inset:0;z-index:100;background:#0B0B0B;color:#F4F1EA;display:flex;flex-direction:column;padding:0 20px 28px;overflow:auto">
+    <div style="height:84px;display:flex;align-items:center;justify-content:space-between">
+      <span style="background:#FFD100;color:#0B0B0B;font:26px/1 var(--font-display);padding:9px 9px 7px">FOTF</span>
+      <button onClick="{{ toggle }}" aria-label="Close menu" style="width:52px;height:52px;background:transparent;border:2px solid #F4F1EA;color:#F4F1EA;font:400 26px/1 var(--font-body);cursor:pointer" style-focus="outline:3px solid #FFD100;outline-offset:3px">×</button>
+    </div>
+    <nav aria-label="Mobile" style="display:flex;flex-direction:column;margin-top:16px">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+        <a href="{{ n.href }}" style="font:44px/1 var(--font-display);text-transform:uppercase;color:#F4F1EA;text-decoration:none;padding:16px 0;border-bottom:1px solid #2a2926;display:flex;justify-content:space-between;align-items:center" style-hover="color:#FFD100" style-active="color:#FFD100">{{ n.label }}<span style="font:400 22px var(--font-body);color:#FFD100">→</span></a>
+      </sc-for>
+    </nav>
+    <div style="margin-top:auto;padding-top:32px;display:flex;flex-direction:column;gap:16px">
+      <dc-import name="FotfButton" variant="primary" tone="dark" hint-size="250px,52px"></dc-import>
+      <a href="#login" style="font:500 16px/1 var(--font-body);color:#F4F1EA;padding:14px 0">Client Login</a>
+    </div>
+  </div>
+</sc-if>
+<sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;left:0;right:0;bottom:0;z-index:60;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:#F4F1EA;border-top:1px solid #D9CFC0;box-shadow:0 -6px 20px rgba(11,11,11,.08)">
+    <a href="#book" style="display:flex;align-items:center;justify-content:center;min-height:56px;background:#FFD100;color:#0B0B0B;border:2px solid #0B0B0B;font:600 17px/1 var(--font-body);text-decoration:none" style-active="background:#0B0B0B;color:#FFD100" style-focus="outline:3px solid #0B0B0B;outline-offset:3px">Book a free call</a>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:90},&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;&quot;,&quot;Who We Help&quot;,&quot;Services&quot;,&quot;Partners&quot;,&quot;Resources&quot;,&quot;About&quot;],&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1440, open: false };
+  componentDidMount() { this.onR = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this.onR); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onR); }
+  renderVals() {
+    const active = this.props.active ?? '';
+    const items = [['Who We Help','Home.dc.html#who'],['Services','Services.dc.html'],['Partners','Partners.dc.html'],['Resources','Resources.dc.html'],['About','About.dc.html']];
+    const mobile = this.state.w < 1100;
+    return {
+      desktop: !mobile, mobile, open: this.state.open,
+      toggle: () => this.setState(s => ({ open: !s.open })),
+      nav: items.map(([label, href]) => ({ label, href, line: label === active ? '#FFD100' : 'transparent' }))
+    };
+  }
+}
+</script>
+</body>
+</html>

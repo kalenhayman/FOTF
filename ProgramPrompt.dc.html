@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./resources.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="ds/design-system-818b5715-8859-4a00-8281-c06910e8e5e2/tokens/fonts.css">
+<link rel="stylesheet" href="ds/design-system-818b5715-8859-4a00-8281-c06910e8e5e2/tokens/colors.css">
+<script src="ds/design-system-818b5715-8859-4a00-8281-c06910e8e5e2/_ds_bundle.js"></script>
+</helmet>
+<div style="background:#F4F1EA;border:2px solid #0B0B0B;box-shadow:8px 8px 0 #0B0B0B;color:#0B0B0B;display:flex;flex-direction:column">
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 22px;border-bottom:2px solid #0B0B0B;font:500 12px/1 var(--font-mono);text-transform:uppercase;letter-spacing:.1em">
+    <span>Program in a Prompt</span><span>{{ stepLabel }}</span>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:4px;padding:16px 22px 0">
+    <sc-for list="{{ bars }}" as="b" hint-placeholder-count="5"><span style="height:6px;background:{{ b.bg }};display:block"></span></sc-for>
+  </div>
+  <sc-if value="{{ asking }}" hint-placeholder-val="{{ true }}">
+    <div style="padding:24px 22px 8px;display:flex;flex-direction:column;gap:18px;min-height:220px">
+      <h3 style="margin:0;font:clamp(28px,3vw,36px)/1 var(--font-display);text-transform:uppercase">{{ q }}</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <sc-for list="{{ opts }}" as="o" hint-placeholder-count="5">
+          <button onClick="{{ o.pick }}" aria-pressed="{{ o.on }}" style="min-height:48px;padding:0 18px;border:1.5px solid #0B0B0B;background:{{ o.bg }};color:{{ o.fg }};font:500 15px/1 var(--font-body);cursor:pointer" style-hover="box-shadow:inset 0 -3px 0 #FFD100" style-focus="outline:3px solid #0B0B0B;outline-offset:2px">{{ o.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:18px 22px 22px;gap:12px">
+      <button onClick="{{ back }}" style="min-height:48px;background:none;border:0;padding:0;font:600 15px/1 var(--font-body);color:#0B0B0B;cursor:pointer;opacity:{{ backOp }}" style-focus="outline:3px solid #0B0B0B;outline-offset:2px">← Back</button>
+      <button onClick="{{ next }}" style="min-height:52px;padding:0 24px;background:#0B0B0B;color:#F4F1EA;border:2px solid #0B0B0B;font:600 16px/1 var(--font-body);cursor:pointer" style-hover="color:#FFD100" style-focus="outline:3px solid #0B0B0B;outline-offset:3px">{{ nextLabel }}</button>
+    </div>
+  </sc-if>
+  <sc-if value="{{ done }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:24px 22px 22px;display:flex;flex-direction:column;gap:16px;min-height:300px">
+      <h3 style="margin:0;font:36px/1 var(--font-display);text-transform:uppercase">Your launch plan is ready</h3>
+      <p style="margin:0;font:400 15px/1.5 var(--font-body);color:#57534B">{{ summary }}</p>
+      <div style="display:flex;flex-direction:column;border-top:1px solid #D9CFC0">
+        <sc-for list="{{ plan }}" as="p" hint-placeholder-count="4">
+          <div style="display:flex;gap:14px;padding:12px 0;border-bottom:1px solid #D9CFC0;font:400 15px/1.4 var(--font-body)"><span style="font:500 12px/1.6 var(--font-mono);color:#57534B;flex:none;width:54px">{{ p.w }}</span><span>{{ p.t }}</span></div>
+        </sc-for>
+      </div>
+      <button onClick="{{ reset }}" style="align-self:flex-start;min-height:44px;background:none;border:0;padding:0;font:600 15px/1 var(--font-body);color:#0B0B0B;text-decoration:underline;text-decoration-color:#FFD100;text-decoration-thickness:3px;text-underline-offset:6px;cursor:pointer">Start over</button>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:520,&quot;height&quot;:420}}">
+class Component extends DCLogic {
+  state = { step: 0, a: [1, null, null, null, null], done: false };
+  Q = [
+    ['What sport is the program for?', ['Soccer','Basketball','Lacrosse','Rugby','Volleyball','Other']],
+    ['Who is it for?', ['U6–U8','U9–U12','U13–U15','U16–U19','Adults']],
+    ['What kind of program?', ['Recreational league','Travel / competitive','Camp or clinic','Tournament']],
+    ['When do you want to launch?', ['Next month','In 2–3 months','Next season']],
+    ['How many players do you expect?', ['Under 50','50–150','150–400','400+']]
+  ];
+  renderVals() {
+    const { step, a, done } = this.state;
+    const [q, options] = this.Q[step];
+    const ans = i => this.Q[i][1][a[i] ?? 0];
+    return {
+      asking: !done, done, q,
+      stepLabel: done ? 'Plan ready' : `Step ${step + 1} of 5`,
+      bars: this.Q.map((_, i) => ({ bg: done || i <= step ? '#0B0B0B' : '#D9CFC0' })),
+      opts: options.map((label, i) => ({ label, on: a[step] === i, bg: a[step] === i ? '#0B0B0B' : 'transparent', fg: a[step] === i ? '#FFD100' : '#0B0B0B',
+        pick: () => this.setState(s => { const n = [...s.a]; n[step] = i; return { a: n }; }) })),
+      backOp: step === 0 ? 0.35 : 1,
+      back: () => this.setState(s => ({ step: Math.max(0, s.step - 1) })),
+      nextLabel: step === 4 ? 'Build my plan' : 'Next',
+      next: () => this.setState(s => s.step === 4 ? { done: true } : { step: s.step + 1 }),
+      reset: () => this.setState({ step: 0, a: [1, null, null, null, null], done: false }),
+      summary: `${ans(2)} · ${ans(0)} · ${ans(1)} · ${ans(4)} players · launching ${ans(3).toLowerCase()}`,
+      plan: [{ w: 'WK 1', t: 'Registration form, fees and waivers set up' }, { w: 'WK 2', t: 'Coach recruitment email and volunteer sign-up' }, { w: 'WK 3', t: 'Field bookings and draft schedule' }, { w: 'WK 4', t: 'Parent welcome pack and launch announcement' }]
+    };
+  }
+}
+</script>
+</body>
+</html>

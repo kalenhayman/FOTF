@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./resources.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="ds/design-system-818b5715-8859-4a00-8281-c06910e8e5e2/tokens/fonts.css">
+<link rel="stylesheet" href="ds/design-system-818b5715-8859-4a00-8281-c06910e8e5e2/tokens/colors.css">
+<script src="ds/design-system-818b5715-8859-4a00-8281-c06910e8e5e2/_ds_bundle.js"></script>
+</helmet>
+<section id="book" style="background:#0B0B0B;color:#F4F1EA">
+  <div style="max-width:1440px;margin:0 auto;padding:clamp(72px,10vw,140px) clamp(20px,4vw,64px) clamp(56px,7vw,96px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr));gap:40px;align-items:end">
+    <h2 style="margin:0;font:clamp(56px,8vw,128px)/.9 var(--font-display);text-transform:uppercase;letter-spacing:-.005em;text-wrap:balance">{{ headline }}</h2>
+    <div style="display:flex;flex-direction:column;gap:24px;align-items:flex-start">
+      <p style="margin:0;font:400 19px/1.55 var(--font-body);max-width:440px;color:#F4F1EA">Twenty minutes, no obligation. Tell us how your season runs and we'll show you what we'd take off your plate.</p>
+      <dc-import name="FotfButton" variant="primary" tone="dark" hint-size="250px,52px"></dc-import>
+      <p style="margin:0;font:400 16px/1.5 var(--font-body);color:#F4F1EA">Prefer email? <a href="mailto:sales@focusonthefield.com" style="color:#F4F1EA;text-decoration:underline;text-decoration-color:#FFD100;text-decoration-thickness:2px;text-underline-offset:5px" style-hover="color:#FFD100">sales@focusonthefield.com</a></p>
+    </div>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:520},&quot;headline&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Ready to get your time back?&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() { return { headline: this.props.headline ?? 'Ready to get your time back?' }; }
+}
+</script>
+</body>
+</html>

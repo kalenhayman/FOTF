@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./resources.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="ds/design-system-818b5715-8859-4a00-8281-c06910e8e5e2/tokens/fonts.css">
+<link rel="stylesheet" href="ds/design-system-818b5715-8859-4a00-8281-c06910e8e5e2/tokens/colors.css">
+<script src="ds/design-system-818b5715-8859-4a00-8281-c06910e8e5e2/_ds_bundle.js"></script>
+</helmet>
+<footer style="background:#0B0B0B;color:#F4F1EA;border-top:1px solid #2a2926">
+  <div style="max-width:1440px;margin:0 auto;padding:64px clamp(20px,4vw,64px) 120px;display:flex;flex-direction:column;gap:56px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:40px">
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <a href="Home.dc.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:#F4F1EA">
+          <span style="background:#FFD100;color:#0B0B0B;font:26px/1 var(--font-display);padding:9px 9px 7px">FOTF</span>
+          <span style="font:700 12px/1.1 var(--font-body);text-transform:uppercase;letter-spacing:.08em">Focus on<br>the Field</span>
+        </a>
+        <div style="display:flex;gap:10px">
+          <sc-for list="{{ socials }}" as="s" hint-placeholder-count="4">
+            <a href="#" aria-label="{{ s.label }}" style="width:44px;height:44px;border:1.5px solid #F4F1EA;display:flex;align-items:center;justify-content:center;color:#F4F1EA" style-hover="background:#FFD100;border-color:#FFD100;color:#0B0B0B" style-focus="outline:3px solid #FFD100;outline-offset:2px"><span style="width:20px;height:20px;background:currentColor;-webkit-mask:{{ s.mask }};mask:{{ s.mask }};display:block"></span></a>
+          </sc-for>
+        </div>
+      </div>
+      <sc-for list="{{ cols }}" as="c" hint-placeholder-count="3">
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <div style="font:500 12px/1 var(--font-mono);text-transform:uppercase;letter-spacing:.1em;color:#FFD100;margin-bottom:10px">{{ c.title }}</div>
+          <sc-for list="{{ c.links }}" as="l" hint-placeholder-count="4">
+            <a href="{{ l.href }}" style="font:400 16px/1.2 var(--font-body);color:#F4F1EA;text-decoration:none;padding:8px 0" style-hover="color:#FFD100">{{ l.label }}</a>
+          </sc-for>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px;padding-top:24px;border-top:1px solid #2a2926;font:400 14px/1.5 var(--font-body);color:#C9C3B8">
+      <span>Serving clients nationally. Based in San Francisco, California.</span>
+      <span>Site designed by AVA Studio.</span>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:420}}">
+class Component extends DCLogic {
+  renderVals() {
+    const m = n => `url(${(window.__resources && window.__resources['lucide-' + n]) || `https://unpkg.com/lucide-static@0.468.0/icons/${n}.svg`}) center/contain no-repeat`;
+    return {
+      socials: [['Instagram','instagram'],['Facebook','facebook'],['LinkedIn','linkedin'],['YouTube','youtube']].map(([label, i]) => ({ label, mask: m(i) })),
+      cols: [
+        { title: 'Who we help', links: [['Clubs','Services.dc.html'],['Leagues','Services.dc.html'],['Events','Services.dc.html'],['Governing Bodies','Services.dc.html'],['Sports Companies','Services.dc.html']].map(([label, href]) => ({ label, href })) },
+        { title: 'Company', links: [['Services','Services.dc.html'],['Partners','Partners.dc.html'],['Resources','Resources.dc.html'],['About','About.dc.html']].map(([label, href]) => ({ label, href })) },
+        { title: 'Get started', links: [['Book a free call','#book'],['Program Planner','Resources.dc.html#prompt'],['Client Login','#login'],['sales@focusonthefield.com','mailto:sales@focusonthefield.com']].map(([label, href]) => ({ label, href })) }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

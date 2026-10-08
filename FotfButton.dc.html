@@ -9,9 +9,9 @@
 <body>
 <x-dc>
 <helmet>
-<link rel="stylesheet" href="_ds/design-system-818b5715-8859-4a00-8281-c06910e8e5e2/tokens/fonts.css">
-<link rel="stylesheet" href="_ds/design-system-818b5715-8859-4a00-8281-c06910e8e5e2/tokens/colors.css">
-<script src="_ds/design-system-818b5715-8859-4a00-8281-c06910e8e5e2/_ds_bundle.js"></script>
+<link rel="stylesheet" href="ds/design-system-818b5715-8859-4a00-8281-c06910e8e5e2/tokens/fonts.css">
+<link rel="stylesheet" href="ds/design-system-818b5715-8859-4a00-8281-c06910e8e5e2/tokens/colors.css">
+<script src="ds/design-system-818b5715-8859-4a00-8281-c06910e8e5e2/_ds_bundle.js"></script>
 </helmet>
 <sc-if value="{{ p }}" hint-placeholder-val="{{ true }}"><a href="{{ href }}" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;background:#FFD100;color:#0B0B0B;border:2px solid #0B0B0B;font:600 16px/1 var(--font-body);text-decoration:none;white-space:nowrap;transition:transform .15s ease,box-shadow .15s ease;box-sizing:border-box" style-hover="transform:translate(-3px,-3px);box-shadow:4px 4px 0 #0B0B0B;color:#0B0B0B" style-active="transform:translate(0,0);box-shadow:none" style-focus="outline:3px solid #0B0B0B;outline-offset:3px">{{ label }}</a></sc-if>
 <sc-if value="{{ pd }}" hint-placeholder-val="{{ false }}"><a href="{{ href }}" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;background:#FFD100;color:#0B0B0B;border:2px solid #FFD100;font:600 16px/1 var(--font-body);text-decoration:none;white-space:nowrap;transition:transform .15s ease,box-shadow .15s ease;box-sizing:border-box" style-hover="transform:translate(-3px,-3px);box-shadow:4px 4px 0 #F4F1EA;color:#0B0B0B" style-active="transform:translate(0,0);box-shadow:none" style-focus="outline:3px solid #F4F1EA;outline-offset:3px">{{ label }}</a></sc-if>

@@ -45,7 +45,7 @@ Edit a component once and every page picks it up.
 ## Folder layout
 
 ```
-_ds/design-system-…/   fonts, font-face CSS and colour tokens
+ds/design-system-…/   fonts, font-face CSS and colour tokens
 assets/images/         hero photo
 assets/icons/          Lucide icons used in cards and the footer, plus favicon
 vendor/                React 18 (local copies, no CDN needed)

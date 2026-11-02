@@ -13,70 +13,56 @@
 <link rel="stylesheet" href="ds/design-system-818b5715-8859-4a00-8281-c06910e8e5e2/tokens/colors.css">
 <script src="ds/design-system-818b5715-8859-4a00-8281-c06910e8e5e2/_ds_bundle.js"></script>
 </helmet>
-<div style="border:1px solid #E2E0DA;border-radius:8px;background:#FFFFFF;display:flex;flex-direction:column;color:#111111">
-  <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 22px;border-bottom:1px solid #E2E0DA">
-    <span style="font:500 13px/1 'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.08em;font-size:12px;color:#B0412E">Program in a Prompt</span><span style="font:500 13px/1 'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.08em;font-size:12px">{{ stepLabel }}</span>
+<div style="background:#F4F1EA;color:#111111;border:2px solid #111111;border-radius:6px;box-shadow:6px 6px 0 #111111;display:flex;flex-direction:column">
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:#111111;color:#FFFFFF;border-radius:4px 4px 0 0">
+    <span style="font:500 13px/1 'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.08em;font-size:12px;color:#FFD100">Program in a Prompt</span><span style="font:500 13px/1 'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.08em;font-size:12px">{{ stepLabel }}</span>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:4px;padding:16px 22px 0">
-    <sc-for list="{{ bars }}" as="b" hint-placeholder-count="5"><span style="height:3px;background:{{ b.bg }};display:block"></span></sc-for>
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:4px;padding:14px 20px 0">
+    <sc-for list="{{ bars }}" as="b" hint-placeholder-count="5"><span style="height:6px;border-radius:2px;background:{{ b.bg }};display:block"></span></sc-for>
   </div>
   <sc-if value="{{ asking }}" hint-placeholder-val="{{ true }}">
-    <div style="padding:22px 22px 8px;display:flex;flex-direction:column;gap:16px;min-height:200px">
-      <h3 style="margin:0;font:600 condensed 28px/1.1 Archivo,sans-serif">{{ q }}</h3>
+    <div style="padding:20px 20px 6px;display:flex;flex-direction:column;gap:16px;min-height:180px">
+      <h3 style="font:700 condensed 34px/1 Archivo,sans-serif;font-stretch:66%;text-transform:uppercase;letter-spacing:-.005em">{{ q }}</h3>
       <div style="display:flex;flex-wrap:wrap;gap:8px">
         <sc-for list="{{ opts }}" as="o" hint-placeholder-count="5">
-          <button onClick="{{ o.pick }}" aria-pressed="{{ o.on }}" style="min-height:44px;padding:0 16px;border-radius:6px;border:1px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.fg }};font:500 15px/1 Archivo,sans-serif;cursor:pointer" style-hover="border-color:#1E5B3F" style-focus="outline:2px solid #111111;outline-offset:2px">{{ o.label }}</button>
+          <button onClick="{{ o.pick }}" aria-pressed="{{ o.on }}" style="min-height:44px;padding:0 16px;border-radius:999px;border:2px solid #111111;background:{{ o.bg }};color:{{ o.fg }};font:600 15px/1 Archivo,sans-serif;cursor:pointer" style-hover="box-shadow:inset 0 -3px 0 #FFD100" style-focus="outline:3px solid #111111;outline-offset:2px">{{ o.label }}</button>
         </sc-for>
       </div>
     </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 22px 22px;gap:12px">
-      <button onClick="{{ back }}" style="min-height:44px;background:none;border:0;padding:0;font:600 16px/1 Archivo,sans-serif;color:#B0412E;cursor:pointer;opacity:{{ backOp }}" style-focus="outline:2px solid #111111;outline-offset:2px">← Back</button>
-      <button onClick="{{ next }}" style="min-height:48px;padding:0 22px;border-radius:6px;background:#1E5B3F;color:#FFFFFF;border:0;font:600 16px/1 Archivo,sans-serif;cursor:pointer" style-hover="background:#174A33" style-focus="outline:2px solid #111111;outline-offset:3px">{{ nextLabel }}</button>
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 20px 20px;gap:12px">
+      <button onClick="{{ back }}" style="min-height:44px;background:none;border:0;padding:0;font:700 16px/1 Archivo,sans-serif;color:#93362A;cursor:pointer;opacity:{{ backOp }}" style-focus="outline:3px solid #111111;outline-offset:2px">← Back</button>
+      <button onClick="{{ next }}" style="min-height:52px;padding:0 24px;border-radius:6px;background:#1E5B3F;color:#FFFFFF;border:2px solid #111111;font:700 16px/1 Archivo,sans-serif;cursor:pointer" style-hover="background:#174A33" style-focus="outline:3px solid #111111;outline-offset:3px">{{ nextLabel }}</button>
     </div>
   </sc-if>
   <sc-if value="{{ done }}" hint-placeholder-val="{{ false }}">
-    <div style="padding:22px;display:flex;flex-direction:column;gap:14px;min-height:280px">
-      <h3 style="margin:0;font:600 condensed 28px/1.1 Archivo,sans-serif">Your launch plan</h3>
-      <p style="margin:0;font:400 15px/1.5 Archivo,sans-serif;color:#93362A">{{ summary }}</p>
-      <div style="display:flex;flex-direction:column;border-top:1px solid #E2E0DA">
+    <div style="padding:20px;display:flex;flex-direction:column;gap:12px;min-height:260px">
+      <h3 style="font:700 condensed 34px/1 Archivo,sans-serif;font-stretch:66%;text-transform:uppercase;letter-spacing:-.005em">Your launch plan</h3>
+      <p style="margin:0;font:500 13px/1 'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.08em;font-size:12px;color:#93362A;line-height:1.5">{{ summary }}</p>
+      <div style="display:flex;flex-direction:column;border-top:2px solid #111111">
         <sc-for list="{{ plan }}" as="p" hint-placeholder-count="4">
-          <div style="display:flex;gap:14px;padding:12px 0;border-bottom:1px solid #E2E0DA;font:400 16px/1.4 Archivo,sans-serif"><span style="font:500 12px/1.6 'JetBrains Mono',monospace;color:#B0412E;flex:none;width:48px">{{ p.w }}</span><span>{{ p.t }}</span></div>
+          <div style="display:flex;gap:14px;padding:11px 0;border-bottom:1px solid #D9CFC0;font:600 16px/1.3 Archivo,sans-serif"><span style="font:500 12px/1.6 'JetBrains Mono',monospace;color:#B0412E;flex:none;width:48px">{{ p.w }}</span><span>{{ p.t }}</span></div>
         </sc-for>
       </div>
-      <button onClick="{{ reset }}" style="align-self:flex-start;min-height:44px;background:none;border:0;padding:0;font:600 16px/1.2 Archivo,sans-serif;color:#B0412E;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px;cursor:pointer" style-hover="text-decoration-thickness:3px">Start over</button>
+      <button onClick="{{ reset }}" style="align-self:flex-start;min-height:44px;background:none;border:0;padding:0;font:700 16px/1 Archivo,sans-serif;color:#111111;text-decoration:underline;text-decoration-color:#FFD100;text-decoration-thickness:3px;text-underline-offset:6px;cursor:pointer">Start over</button>
     </div>
   </sc-if>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 520, &quot;height&quot;: 400}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 520, &quot;height&quot;: 380}}">
 class Component extends DCLogic {
   state = { step: 0, a: [0, null, null, null, null], done: false };
-  Q = [
-    ['What sport?', ['Soccer','Basketball','Lacrosse','Rugby','Volleyball','Other']],
-    ['Who is it for?', ['U6–U8','U9–U12','U13–U15','U16–U19','Adults']],
-    ['What kind of program?', ['Recreational','Travel / competitive','Camp or clinic','Tournament']],
-    ['When do you launch?', ['Next month','In 2–3 months','Next season']],
-    ['How many players?', ['Under 50','50–150','150–400','400+']]
-  ];
+  Q = [['What sport?', ['Soccer','Basketball','Lacrosse','Rugby','Volleyball','Other']], ['Age group?', ['U6–U8','U9–U12','U13–U15','U16–U19','Adults']], ['Program type?', ['Rec','Travel','Camp','Tournament']], ['Launch when?', ['Next month','2–3 months','Next season']], ['How many players?', ['<50','50–150','150–400','400+']]];
   renderVals() {
-    const { step, a, done } = this.state;
-    const [q, options] = this.Q[step];
-    const ans = i => this.Q[i][1][a[i] ?? 0];
-    return {
-      asking: !done, done, q,
-      stepLabel: done ? 'Plan ready' : `Step ${step + 1} of 5`,
-      bars: this.Q.map((_, i) => ({ bg: done || i <= step ? '#1E5B3F' : '#E2E0DA' })),
-      opts: options.map((label, i) => ({ label, on: a[step] === i ? 'true' : 'false',
-        bg: a[step] === i ? '#1E5B3F' : '#FFFFFF', fg: a[step] === i ? '#FFFFFF' : '#111111', bd: a[step] === i ? '#1E5B3F' : '#E2E0DA',
+    const { step, a, done } = this.state, [q, options] = this.Q[step], ans = i => this.Q[i][1][a[i] ?? 0];
+    return { asking: !done, done, q, stepLabel: done ? 'Plan ready' : `${step + 1} / 5`,
+      bars: this.Q.map((_, i) => ({ bg: done || i <= step ? '#B0412E' : '#D9CFC0' })),
+      opts: options.map((label, i) => ({ label, on: a[step] === i ? 'true' : 'false', bg: a[step] === i ? '#111111' : 'transparent', fg: a[step] === i ? '#FFD100' : '#111111',
         pick: () => this.setState(s => { const n = [...s.a]; n[step] = i; return { a: n }; }) })),
-      backOp: step === 0 ? 0.35 : 1,
-      back: () => this.setState(s => ({ step: Math.max(0, s.step - 1) })),
-      nextLabel: step === 4 ? 'Build my plan' : 'Next',
-      next: () => this.setState(s => s.step === 4 ? { done: true } : { step: s.step + 1 }),
+      backOp: step === 0 ? 0.35 : 1, back: () => this.setState(s => ({ step: Math.max(0, s.step - 1) })),
+      nextLabel: step === 4 ? 'Build my plan' : 'Next', next: () => this.setState(s => s.step === 4 ? { done: true } : { step: s.step + 1 }),
       reset: () => this.setState({ step: 0, a: [0, null, null, null, null], done: false }),
       summary: `${ans(2)} · ${ans(0)} · ${ans(1)} · ${ans(4)} players · ${ans(3).toLowerCase()}`,
-      plan: [{ w: 'WK 1', t: 'Registration, fees and waivers set up' }, { w: 'WK 2', t: 'Coach and volunteer sign-up' }, { w: 'WK 3', t: 'Field bookings and draft schedule' }, { w: 'WK 4', t: 'Parent welcome pack and launch' }]
-    };
+      plan: [{ w: 'WK 1', t: 'Registration and waivers' }, { w: 'WK 2', t: 'Coach sign-up' }, { w: 'WK 3', t: 'Fields and schedule' }, { w: 'WK 4', t: 'Launch emails' }] };
   }
 }
 </script>

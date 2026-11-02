@@ -1,1 +1,14 @@
-:root{--neon:#D8FE00;--ink:#0B0B0B;--bone:#F4F1EA;--sand:#D9CFC0}
+/* FOTF brand style sheet v4 colours. Yellow is for the main button and the field line only (~5% of a screen). */
+:root{
+  --green:#1E5B3F;      /* Field Green: section grounds, closing band, second button, icons, step markers, done status (~18%) */
+  --green-tint:#E4EEE8; /* second button hover */
+  --clay:#B0412E;       /* Track Clay: labels, links, stats, tags on Paper/Chalk/Sand (~10%) */
+  --clay-700:#93362A;   /* clay on Sand, pressed links */
+  --yellow:#FFD100;     /* FOTF Yellow: main button and field line (~5%) */
+  --yellow-hover:#F2C700;--yellow-press:#E3BA00;
+  --ink:#111111;        /* text, footer (~10%) */
+  --paper:#FFFFFF;      /* main background (~45%) */
+  --chalk:#F4F3EF;      /* cards */
+  --sand:#F3E6D8;       /* alternate sections */
+  --line:#E2E0DA;       /* borders and dividers */
+}

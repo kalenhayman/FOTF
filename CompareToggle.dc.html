@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./resources.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="ds/design-system-818b5715-8859-4a00-8281-c06910e8e5e2/tokens/fonts.css">
+<link rel="stylesheet" href="ds/design-system-818b5715-8859-4a00-8281-c06910e8e5e2/tokens/colors.css">
+<script src="ds/design-system-818b5715-8859-4a00-8281-c06910e8e5e2/_ds_bundle.js"></script>
+</helmet>
+<div style="display:flex;flex-direction:column;gap:20px;max-width:760px">
+  <div role="radiogroup" aria-label="Compare options" style="display:flex;flex-wrap:wrap;gap:8px">
+    <sc-for list="{{ opts }}" as="o" hint-placeholder-count="3">
+      <button role="radio" aria-checked="{{ o.on }}" onClick="{{ o.pick }}" style="flex:1 1 140px;min-height:48px;padding:0 16px;border-radius:6px;font:600 16px/1 Archivo,sans-serif;cursor:pointer;border:1.5px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.fg }}" style-hover="border-color:#1E5B3F" style-focus="outline:2px solid #111111;outline-offset:2px">{{ o.label }}</button>
+    </sc-for>
+  </div>
+  <div style="border:1px solid #E2E0DA;border-radius:8px;background:#FFFFFF;overflow:hidden">
+    <div style="padding:18px 22px;border-bottom:1px solid #E2E0DA;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;align-items:baseline">
+      <b style="font:600 19px/1.35 Archivo,sans-serif">{{ summary }}</b>
+      <span style="font:500 13px/1 'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:#B0412E;white-space:nowrap">{{ left }}</span>
+    </div>
+    <sc-for list="{{ rows }}" as="r" hint-placeholder-count="5">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 22px;border-bottom:1px solid #E2E0DA;font:400 17px/1.4 Archivo,sans-serif">
+        <span>{{ r.label }}</span>
+        <span style="display:inline-flex;align-items:center;gap:6px;font:600 15px/1 Archivo,sans-serif;color:{{ r.c }};white-space:nowrap"><span aria-hidden="true" style="width:16px;height:16px;background:{{ r.c }};-webkit-mask:{{ r.mask }};mask:{{ r.mask }}"></span>{{ r.status }}</span>
+      </div>
+    </sc-for>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 800, &quot;height&quot;: 420}}">
+class Component extends DCLogic {
+  state = { pick: 0 };
+  R = ['Registration and rosters', 'Parent and member emails', 'Tools set up and maintained', 'Cover for holidays and turnover'];
+  O = [
+    ['FOTF', 'One team, one monthly invoice.', [1, 1, 1, 1]],
+    ['Hire an admin', 'One person to recruit, train and cover.', [1, 1, 0, 0]],
+    ['Buy software', 'A tool you still have to run.', [0, 0, 0, 0]]
+  ];
+  renderVals() {
+    const pick = this.state.pick, [, summary, st] = this.O[pick];
+    const m = n => `url(assets/icons/${n}.svg) center/contain no-repeat`;
+    const n = st.filter(x => !x).length;
+    return {
+      summary, left: n === 0 ? 'Nothing left on your plate' : `${n} left on your plate`,
+      opts: this.O.map(([label], i) => ({ label, on: i === pick ? 'true' : 'false',
+        bg: i === pick ? '#1E5B3F' : '#FFFFFF', fg: i === pick ? '#FFFFFF' : '#1E5B3F', bd: '#1E5B3F', pick: () => this.setState({ pick: i }) })),
+      rows: this.R.map((label, i) => ({ label, status: st[i] ? 'Handled' : 'On your plate', c: st[i] ? '#1E5B3F' : '#B0412E', mask: m(st[i] ? 'check' : 'x') }))
+    };
+  }
+}
+</script>
+</body>
+</html>
